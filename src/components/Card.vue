@@ -1,0 +1,74 @@
+<template>
+  <li class="user-card">
+    <div :style="backgroundStyles(user.picture.large)" class="user-card__photo"></div>
+    <div class="name-email-container">
+        <div class="name-email-container__name">
+            {{ fullName }}
+        </div>
+        <a :href="`mailto:${user.email}`" class="name-email-container__email">{{ user.email }}</a>
+    </div>
+    
+  </li>
+</template>
+
+<script>
+export default {
+  name: 'Card',
+  props: {
+    user: {
+      type: Object,
+      default: () => ({ 
+          name: {
+            fist: '',
+            last: ''
+          },
+          email: '',
+          picture: {
+            'large': '',
+            'medium': '',
+            'thumbnail': ''
+          }
+       })
+    },
+  },
+  computed: {
+    fullName() {
+      const { first, last } = this.user.name;
+      return `${first} ${last}` 
+    }
+  },
+  methods: {
+    backgroundStyles(image) {
+      return {
+        'background-image': `url(${image})`,
+      }
+    }
+  },
+}
+</script>
+
+<style lang="scss" scoped>
+.user-card {
+  display: flex;
+  padding: 16px;
+  background-color: #f1f9f9;
+  margin-bottom: 10px;
+
+  &__photo {
+    width: 50px;
+    height: 50px;
+    background-size: contain;
+    background-position: center;
+    border-radius: 50%;
+  }
+
+  & .name-email-container {
+        margin-left: 20px;
+
+        &__name {
+            font-size: 20px;
+            color: #706c61;
+        }
+  }
+}
+</style>

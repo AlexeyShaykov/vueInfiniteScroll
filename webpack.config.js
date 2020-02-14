@@ -6,6 +6,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     filename: 'bundle.js',
+    publicPath: '/dist/',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -19,10 +20,11 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           'vue-style-loader',
-          'css-loader'
+          'css-loader',
+          'sass-loader'
         ]
       }
     ],
