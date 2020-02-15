@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
     <div class="card-container__header">
-      My infinity users list
+      My infinite users list
     </div>
     <div 
       ref="srolledList" 
