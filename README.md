@@ -1,7 +1,7 @@
 ![Repo Banner](https://i.imgur.com/zM5CZhi.jpg)
 
 ### Demo
-[Click me on Ch || FF || Safari](https://infinity-users-list.netlify.com/)
+[Click me on Ch || FF || Safari](https://infinite-users-list.netlify.com/)
 (if not opened - use VPN)
 
 ### Technical stack
