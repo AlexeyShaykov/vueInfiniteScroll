@@ -55,20 +55,44 @@ export default {
   margin-bottom: 10px;
 
   &__photo {
+    min-width: 50px;
     width: 50px;
     height: 50px;
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     border-radius: 50%;
   }
 
   & .name-email-container {
         margin-left: 20px;
+        overflow: hidden;
+
+        > * {
+          display: block;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
 
         &__name {
             font-size: 20px;
             color: #706c61;
         }
+
+        &__email {
+          transition: opacity .3s;
+          &:hover {
+            opacity: .5;
+          }
+        }
+  }
+}
+
+@media (max-width: 320px) {
+  .user-card {
+    & .name-email-container {
+      margin-left: 8px;
+    }
   }
 }
 </style>

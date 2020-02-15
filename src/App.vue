@@ -81,5 +81,21 @@ body {
     }
   }
 }
+
+@media (max-width: 500px) {
+    body {
+      & .card-container {
+        max-width: none;
+        margin: 0;
+        width: 100%;
+
+        & .srolled-list {
+          padding: 10px 16px;
+          max-height: 100vh;
+        }
+      }
+    } 
+}
+
  
 </style>
