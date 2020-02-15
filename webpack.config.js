@@ -1,5 +1,6 @@
 const path = require('path');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 
 module.exports = {
@@ -38,11 +39,8 @@ module.exports = {
     },
     extensions: ['.js', '.vue']
   },
+  optimization: {
+    minimize: process.env.NODE_ENV === 'production',
+    minimizer: [new TerserPlugin()],
+  },
 };
-
-if (process.env.NODE_ENV === 'production') {
-  const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-  module.exports.plugins = (module.exports.plugins || []).concat([
-    new UglifyJsPlugin()
-  ])
-}

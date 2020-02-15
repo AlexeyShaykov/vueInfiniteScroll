@@ -35,13 +35,13 @@ $ yarn build
 
 | Plugin | DOC |
 | ------ | ------ |
-| VueLoaderPlugin | [https://vue-loader.vuejs.org/guide/][PlDb] |
-| Uglifyjsplugin | [https://webpack.js.org/plugins/uglifyjs-webpack-plugin/][PlGh] |
+| VueLoaderPlugin | https://vue-loader.vuejs.org/guide/ |
+| terser-webpack-plugin | https://webpack.js.org/plugins/terser-webpack-plugin/ |
 
 | Loader | DOC |
 | ------ | ------ |
-| vue-style-loader | [https://github.com/vuejs/vue-style-loader][PlDb] |
-| sass-loader | [https://github.com/webpack-contrib/sass-loader][PlGh] |
+| vue-style-loader | https://github.com/vuejs/vue-style-loader |
+| sass-loader | https://github.com/webpack-contrib/sass-loader |
 
 License
 ----
