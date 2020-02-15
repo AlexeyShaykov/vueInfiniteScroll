@@ -1,7 +1,7 @@
 <template>
   <div class="card-container">
-    <div class="card-container__header">My users list</div>
-    <div class="srolled-list" ref="srolledList">
+    <div class="card-container__header">My infinity users list</div>
+    <div class="srolled-list" ref="srolledList" @scroll="handleDebouncedScroll">
       <ul v-if="users.length">
         <Card v-for="(user, index) in users" :key="index" :user="user" />
       </ul>
@@ -27,20 +27,24 @@ export default {
     Loader
   },
   methods: {
-    handleScroll(e) {
-      console.log(e)
+    handleScroll() {
+       if( this.$refs.srolledList.scrollTop +  this.$refs.srolledList.clientHeight >=  this.$refs.srolledList.scrollHeight) {
+        this.loadUsers();
+      }
     },
-    initEvents() {
-      const debounce = (a,b=250,c)=>(...d)=>clearTimeout(c,c=setTimeout(a,b,...d))
-      this.handleDebouncedScroll = debounce(this.handleScroll, 100);
-      this.$refs.srolledList.addEventListener('scroll', this.handleDebouncedScroll);
+    async loadUsers() {
+      this.loading = true;
+      const { results = [] } = await getUsers();
+      this.loading = false;
+      this.users = [...this.users, ...results];
     }
   },
-  async mounted () {
-    const { results = [] } = await getUsers();
-    this.loading = false;
-    this.users = results;
-    this.initEvents();
+  created () {
+    const debounce = (a,b=250,c)=>(...d)=>clearTimeout(c,c=setTimeout(a,b,...d))
+    this.handleDebouncedScroll = debounce(this.handleScroll, 100);
+  },
+  mounted () {
+    this.loadUsers();
   },
 }
 </script>
@@ -57,7 +61,7 @@ body {
     &__header {
         margin: 20px 0;
         font-size: 22px;
-        color: #fff;
+        color: #333;
     }
 
     & .srolled-list {  

@@ -5,15 +5,12 @@
 <script>
   export default {
     name: 'Loader',
-    props: {
-      loading: Boolean
-    },
   }
 </script>
 
 <style lang="scss" scoped>
 .loader-container {
-  display: inline-block;
+  display: block;
   position: relative;
   width: 80px;
   height: 80px;
