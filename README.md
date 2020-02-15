@@ -1,7 +1,8 @@
 ![Repo Banner](https://i.imgur.com/zM5CZhi.jpg)
 
 ### Demo
-Dillinger is very easy to install and deploy in a Docker container.
+[Click me on Ch || FF || Safari](https://infinity-users-list.netlify.com/)
+if not opened - use VPN)
 
 By default, the Docker will expose port 8080, so change this within the Dockerfile if necessary. When ready, simply use the Dockerfile to build the image.
 
