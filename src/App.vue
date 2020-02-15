@@ -1,9 +1,19 @@
 <template>
   <div class="card-container">
-    <div class="card-container__header">My infinity users list</div>
-    <div class="srolled-list" ref="srolledList" @scroll="handleDebouncedScroll">
+    <div class="card-container__header">
+      My infinity users list
+    </div>
+    <div 
+      ref="srolledList" 
+      class="srolled-list"
+      @scroll="handleDebouncedScroll"
+    >
       <ul v-if="users.length">
-        <Card v-for="(user, index) in users" :key="index" :user="user" />
+        <Card 
+          v-for="(user, index) in users"
+          :key="index" 
+          :user="user"
+        />
       </ul>
       <Loader v-if="loading" />
     </div>
@@ -16,15 +26,22 @@ import Card  from './components/Card';
 import Loader  from './components/Loader';
 
 export default {
+  components: {
+    Card,
+    Loader
+  },
   data() {
     return {
       users: [],
       loading: true,
     }
   },
-  components: {
-    Card,
-    Loader
+  created () {
+    const debounce = (a,b=250,c)=>(...d)=>clearTimeout(c,c=setTimeout(a,b,...d))
+    this.handleDebouncedScroll = debounce(this.handleScroll, 100);
+  },
+  mounted () {
+    this.loadUsers();
   },
   methods: {
     handleScroll() {
@@ -38,14 +55,7 @@ export default {
       this.loading = false;
       this.users = [...this.users, ...results];
     }
-  },
-  created () {
-    const debounce = (a,b=250,c)=>(...d)=>clearTimeout(c,c=setTimeout(a,b,...d))
-    this.handleDebouncedScroll = debounce(this.handleScroll, 100);
-  },
-  mounted () {
-    this.loadUsers();
-  },
+  }
 }
 </script>
 

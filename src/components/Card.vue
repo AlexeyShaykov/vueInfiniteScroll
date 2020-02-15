@@ -1,13 +1,20 @@
 <template>
   <li class="user-card">
-    <div :style="backgroundStyles(user.picture.large)" class="user-card__photo"></div>
+    <div 
+      :style="backgroundStyles(user.picture.large)" 
+      class="user-card__photo"
+    />
     <div class="name-email-container">
-        <div class="name-email-container__name">
-            {{ fullName }}
-        </div>
-        <a :href="`mailto:${user.email}`" class="name-email-container__email">{{ user.email }}</a>
+      <div class="name-email-container__name">
+        {{ fullName }}
+      </div>
+      <a 
+        :href="`mailto:${user.email}`"
+        class="name-email-container__email"
+      >
+        {{ user.email }}
+      </a>
     </div>
-    
   </li>
 </template>
 

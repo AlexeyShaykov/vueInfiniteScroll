@@ -1,5 +1,7 @@
 <template>
-  <div class="loader-container"><div></div><div></div></div>
+  <div class="loader-container">
+    <div /><div />
+  </div>
 </template>
 
 <script>
