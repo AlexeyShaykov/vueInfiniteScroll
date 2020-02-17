@@ -5,6 +5,9 @@
 </template>
 
 <script>
+/**
+   * @displayName Loader
+*/
   export default {
     name: 'Loader',
   }

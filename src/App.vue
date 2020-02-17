@@ -21,6 +21,9 @@
 </template>
 
 <script>
+/**
+   * @displayName App
+*/
 import getUsers from './service';
 import Card  from './components/Card';
 import Loader  from './components/Loader';
@@ -44,11 +47,17 @@ export default {
     this.loadUsers();
   },
   methods: {
+	/**
+       * Handle on scroll event if sroll on list bottom - get new data
+    */
     handleScroll() {
-       if( this.$refs.srolledList.scrollTop +  this.$refs.srolledList.clientHeight >=  this.$refs.srolledList.scrollHeight) {
+       if (this.$refs.srolledList.scrollTop + this.$refs.srolledList.clientHeight >= this.$refs.srolledList.scrollHeight) {
         this.loadUsers();
       }
-    },
+	},
+	/**
+       * Load new users 
+    */
     async loadUsers() {
       this.loading = true;
       const { results = [] } = await getUsers();

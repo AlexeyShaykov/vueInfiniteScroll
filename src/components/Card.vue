@@ -19,9 +19,16 @@
 </template>
 
 <script>
+/**
+   * Card with users info
+   * @displayName Card
+   */
 export default {
   name: 'Card',
   props: {
+	  /**
+       * Object with user info
+       */
     user: {
       type: Object,
       default: () => ({ 
@@ -39,12 +46,21 @@ export default {
     },
   },
   computed: {
+	  /**
+       * user full name
+       * @return{string}
+       */
     fullName() {
       const { first, last } = this.user.name;
       return `${first} ${last}` 
     }
   },
   methods: {
+	/**
+         * Retrun user photo on template
+         * @param{string} image user large picture
+         * @return{string} css style with background image
+    */
     backgroundStyles(image) {
       return {
         'background-image': `url(${image})`,
